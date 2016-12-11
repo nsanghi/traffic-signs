@@ -14959,7 +14959,11 @@ wnd3d3d3d8/o7hC+u7u7u7t7Rvf/A3OKp9H9119tAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>The input is color image each of size 32x32x3. The value of each pixel ranges from 0-255. I normalised the data to the range 0-1 by dividing each pixel value by 255.</p>
+<p>The input is color image each of size 32x32x3. The value of each pixel ranges from 0-255. I normalised the data to the range 0-1 by dividing each pixel value by 255. There are two broad reasons to noramlise the image pixel values to 0-1:</p>
+<ul>
+<li>In many cases it helps in speedy convergence of SGD in learning</li>
+<li>A model trained on normalised pixel value range of 0-1 provides a standard model that can be easily used on images where pixel depth is more than 8 bits. We just need to normalise the test image pixel values to 0-1 and then run it agained the normalised NN model. </li>
+</ul>
 
 </div>
 </div>
@@ -39349,7 +39353,8 @@ The original and resized images are plotted above. I used five images which are 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-The performance is not good at all in the new samples from web as compared to test set. I think the rescaling was also an issue. I realised this when I compared the rescaled images from my sample set with the 32x32 images in train data set.</p>
+The performance is not good at all in the new samples from web as compared to test set. The accuracy of 20% (1 out of 5) compares poorly with the german dataset test set accuracy of 95.3%.</p>
+<p>I think the rescaling was also an issue. I realised this when I compared the rescaled images from my sample set with the 32x32 images in train data set.</p>
 <p>The countries may have variations in the way same sign is shown. For a better check, I should have taken images from german roads to have a comparision of accuracy with german and other country traffic signs.</p>
 
 </div>
